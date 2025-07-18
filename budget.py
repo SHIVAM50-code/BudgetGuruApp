@@ -81,7 +81,7 @@ if st.button("💾 Add Expense"):
 # -------------------- LOAD EXPENSES --------------------
 @st.cache_data(ttl=300)
 def load_expenses():
-    data = expense_sheet.get_all_records(expected_headers=["Timestamp", "UserID", "Date", "Category", "Amount", "UserID", "Budget"])
+    data = expense_sheet.get_all_records(expected_headers=["Timestamp", "UserID", "Date", "Category", "Amount", "Budget"])
     return pd.DataFrame(data)
 
 df = load_expenses()

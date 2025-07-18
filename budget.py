@@ -58,7 +58,7 @@ if st.button("Set Budget"):
     st.session_state.weekly_budget = budget_input
     try:
         sheet.update("A2", "Budget")
-        sheet.update("D2", [[budget_input]])
+        sheet.update("A2", [[budget_input]])
         st.success("✅ Budget saved successfully!")
     except Exception as e:
         st.warning(f"⚠️ Failed to save budget: {e}")

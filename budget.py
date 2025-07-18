@@ -76,7 +76,14 @@ subcategory_options = {
     "Other": ["Miscellaneous"]
 }
 
-sub_category = st.selectbox("Subcategory", subcategory_options[main_category]) # type: ignore
+# Select main category
+main_category = st.selectbox("Category", list(subcategory_options.keys()))
+
+# Only show subcategory if a main_category is selected
+if main_category:
+    sub_category = st.selectbox("Subcategory", subcategory_options.get(main_category, []))
+else:
+    sub_category = ""
 amount = st.number_input("💸 Amount (₹)", min_value=1, step=1)
 
 if st.button("Add Expense"):

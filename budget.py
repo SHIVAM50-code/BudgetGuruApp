@@ -12,7 +12,7 @@ def connect_to_gsheet():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
     
-    creds_dict = json.loads(st.secrets["GOOGLE_SHEETS_CREDS"])
+    creds_dict = st.secrets["GOOGLE_SHEETS_CREDS"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open("BudgetGuruApp").sheet1  # Make sure sheet name matches

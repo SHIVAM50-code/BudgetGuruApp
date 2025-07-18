@@ -105,6 +105,7 @@ data = sheet.get_all_records()
 df = pd.DataFrame(data)
 
 if not df.empty:
+    df["Amount (₹)"] = pd.to_numeric(df["Amount (₹)"], errors="coerce")
     total_spent = df["Amount (₹)"].sum()
     remaining = weekly_budget - total_spent
     st.metric("Total Spent", f"₹{total_spent}")

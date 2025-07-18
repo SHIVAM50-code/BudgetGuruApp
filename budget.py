@@ -46,10 +46,10 @@ with st.expander("📝 Set Weekly Budget"):
         # Save to Google Sheet
         existing_users = budget_sheet.col_values(1)
         if user_id in existing_users:
-            row_index = existing_users.index(user_id) + 1
-            budget_sheet.update(f"B{row_index}", budget_input)
+         row_index = existing_users.index(user_id) + 2 # +2 to match actual row
+         budget_sheet.update_cell(row_index, 2, budget_input)
         else:
-            budget_sheet.append_row([user_id, budget_input])
+         budget_sheet.append_row([user_id, budget_input])
         st.success("Weekly budget saved!")
         st.session_state.weekly_budget = budget_input
 
